@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, url_for, render_template
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
@@ -11,6 +11,12 @@ def minimal():
 @app.route('/')
 def hello_world():
     return 'Hello World!'
+
+
+@app.route('/filter', methods=['POST'])
+def filter():
+    data = request.form['my_posted_data']
+    return jsonify({'success': True})
 
 
 if __name__ == '__main__':

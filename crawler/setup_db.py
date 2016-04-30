@@ -1,6 +1,5 @@
 import sqlite3
 
-
 DBROWS = []
 DBROWS += ['Champion%i' % i for i in range(1,11)]
 DBROWS += ['MasteryLevel%i' % i for i in range(1,11)]
@@ -20,6 +19,9 @@ DBNAME = 'games.db'
 
 SQL_CREATE = 'CREATE TABLE games (' + ','.join([' '.join(pair) for pair in zip(DBROWS, DBTYPES)]) + ')'
 
-conn = sqlite3.connect(DBNAME)
-cur = conn.cursor()
-cur.execute(SQL_CREATE)
+
+if __name__ == '__main__':
+
+    conn = sqlite3.connect(DBNAME)
+    cur = conn.cursor()
+    cur.execute(SQL_CREATE)

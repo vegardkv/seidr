@@ -1,0 +1,29 @@
+
+.bar--positive {
+  fill: steelblue;
+}
+
+.bar--negative {
+  fill: darkorange;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+/* SAMPLE PLOT CLASSES */
+/*
+.bar {
+  fill: steelblue;
+}
+*/
+.bar:hover {
+  fill: orange;
+}

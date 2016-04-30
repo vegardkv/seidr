@@ -19,7 +19,7 @@ if __name__ == '__main__':
     db_cursor = db_connection.cursor()
 
     try:
-        
+
         MATCH_URL = 'https://euw.api.pvp.net/api/lol/euw/v2.2/match/'
         session = requests.Session()
         params = dict(api_key=API_KEY)

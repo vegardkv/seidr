@@ -2,7 +2,7 @@ import numpy as np
 import sqlite3
 
 
-def parse(cursor):
+def masterylevel_by_role(cursor):
     cursor.execute('SELECT * FROM games')
     db_data = cursor.fetchall()
     jng_winner =[]
@@ -19,17 +19,18 @@ def parse(cursor):
         except IndexError:
             continue
         winning_team = d[42]
-        jng_winner.append(jng[winning_team])
-        top_winner.append(top[winning_team])
-        mid_winner.append(mid[winning_team])
-        jng_loser.append(jng[not winning_team])
-        top_loser.append(top[not winning_team])
-        mid_loser.append(mid[not winning_team])
+        # Subtract 20 to get mastery level score
+        jng_winner.append(float(d[jng[winning_team]-20]))
+        top_winner.append(float(d[top[winning_team]-20]))
+        mid_winner.append(float(d[mid[winning_team]-20]))
+        jng_loser.append(float(d[jng[not winning_team]-20]))
+        top_loser.append(float(d[top[not winning_team]-20]))
+        mid_loser.append(float(d[mid[not winning_team]-20]))
     return jng_winner, top_winner, mid_winner, jng_loser, top_loser, mid_loser
 
 
 if __name__ == '__main__':
     conn = sqlite3.connect('games.db')
     cursor = conn.cursor()
-    parse(cursor)
+    a,b,c,d,e,f = masterylevel_by_role(cursor)
     conn.close()
